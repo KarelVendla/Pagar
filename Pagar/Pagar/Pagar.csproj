@@ -274,6 +274,7 @@
     <Content Include="Views\Pagaris\Edit.cshtml" />
     <Content Include="Views\Pagaris\Index.cshtml" />
     <Content Include="Views\Pagaris\Valmis_Tooted.cshtml" />
+    <Content Include="Views\Pagaris\Statistika.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

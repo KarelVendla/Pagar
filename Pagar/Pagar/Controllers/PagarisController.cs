@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Pagar.Models;
 
@@ -19,6 +20,27 @@ namespace Pagar.Controllers
         public ActionResult Index()
         {
             return View(db.Pagaris.Where(m => m.Valmis == false).ToList());
+        }
+
+        public ActionResult Statistika()
+        {
+            var model = db.Pagaris.Where(m => m.Valmis).ToList();
+            return View(model);
+        }
+
+        public ActionResult chart()
+        {
+            var tellimused = db.Pagaris.Count();
+            var lopetatud = db.Pagaris.Where(m => m.Valmis == true).Count();
+            var uleantud = db.Pagaris.Where(m => m.TuleJärgi == true).Count();
+
+            new Chart(width: 600, height: 300)
+                .AddSeries(
+                chartType: "doughnut",
+                xValue: new[] { "Tellimusi", "Kohale toimetatud" ,"Lõpetatud" },
+                yValues: new[] { tellimused, uleantud ,lopetatud })
+                .Write("png");
+            return null;
         }
 
         // Loob vaate Valmis tooted, kus kuvatakse valmis tooted
