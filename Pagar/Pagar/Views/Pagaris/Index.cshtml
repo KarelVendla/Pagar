@@ -12,6 +12,9 @@
             @Html.DisplayNameFor(model => model.Kogus)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Ühik)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Toode)
         </th>
         <th>
@@ -36,6 +39,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Kogus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ühik)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Toode)
@@ -82,10 +88,10 @@
             {
 
                 @Html.ActionLink("Edit |", "Edit", new { id = item.Id });
-                @Html.ActionLink("Details |", "Details", new { id = item.Id });
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id });
 
-            } else if(User.Identity.IsAuthenticated == false)
+            }
+            else if (User.Identity.IsAuthenticated == false)
             {
                 @:.
             }

@@ -7,13 +7,13 @@ namespace Pagar.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class tobool : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(tobool));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906040712205_tobool"; }
+            get { return "201906040937448_init"; }
         }
         
         string IMigrationMetadata.Source
