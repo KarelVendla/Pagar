@@ -24,10 +24,13 @@ namespace Pagar.Controllers
 
         public ActionResult Statistika()
         {
-            var model = db.Pagaris.Where(m => m.Valmis).ToList();
-            return View(model);
-        }
 
+            TempData["Kõik"] = db.Pagaris.Count();
+            TempData["Lõpetatud"] = db.Pagaris.Where(m => m.Valmis == true).Count();
+            TempData["Üleantud"] = db.Pagaris.Where(m => m.TuleJärgi == true).Count();
+            return View();
+        }
+        //Loob diagrammi tellimuste, kohale toimetatute ja lõpetatud tellimuste kohta.
         public ActionResult chart()
         {
             var tellimused = db.Pagaris.Count();
@@ -37,7 +40,7 @@ namespace Pagar.Controllers
             new Chart(width: 600, height: 300)
                 .AddSeries(
                 chartType: "doughnut",
-                xValue: new[] { "Tellimusi", "Kohale toimetatud" ,"Lõpetatud" },
+                xValue: new[] { "Tellimusi", "Kohale toimetatud" ,"Valmistatud tooteid" },
                 yValues: new[] { tellimused, uleantud ,lopetatud })
                 .Write("png");
             return null;

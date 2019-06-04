@@ -4,7 +4,17 @@
     ViewBag.Title = "Statistika";
 }
 <h2>Statistika</h2>
+<table>
+    <tr>
+        <h3>Tellitud tooteid: @ViewBag.Kõik @TempData["Kõik"]</h3>
+    </tr>
+    <tr>
+        <h3>Valmistatud tooteid: @ViewBag.Lõpetatud @TempData["Lõpetatud"]</h3>
+    </tr>
+    <tr>
+        <h3>Üleantud kliendile:  @ViewBag.Üleantud @TempData["Üleantud"]</h3>
+    </tr>
+</table>
 @{
-    <img src="@Url.Action("chart")" alt="SimpleChart" />
-
+    <img style="text-" src="@Url.Action("chart")" alt="SimpleChart" />
 }
