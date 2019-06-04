@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Pagar.Models.Pagari>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tellitud tooted</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kogus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ühik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Toode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tähtaeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lisa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valmis)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kogus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ühik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tähtaeg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lisa)
+        </td>
+        <td>
+            @* Kui kasutaja on sisselogitud siis saab muutusi teha kui ei siis näeb tavalist teksti *@
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                if (item.Valmis == false)
+                {
+                    @Html.ActionLink("Määra valmis", "M_Valmis", new { id = item.Id })
+                }
+                else if (item.Valmis == true)
+                {
+                    @:Valmis
+                }
+            }
+            else if (User.Identity.IsAuthenticated == false)
+            {
+                if (item.Valmis == false)
+                {
+                    @:Valmimisel
+                }
+                else if (item.Valmis == true)
+                {
+                    @:Valmis
+                }
+            }
+
+        </td>
+        <td>
+            @* Kui kasutaja on sisselogitud siis saab muutusi teha kui ei siis näeb tavalist teksti *@
+            @if (User.Identity.IsAuthenticated == true)
+            {
+
+                @Html.ActionLink("Edit |", "Edit", new { id = item.Id });
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+
+            }
+            else if (User.Identity.IsAuthenticated == false)
+            {
+                @:.
+            }
+
+        </td>
+    </tr>
+}
+
+</table>

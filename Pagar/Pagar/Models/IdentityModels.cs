@@ -29,5 +29,7 @@ namespace Pagar.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Pagar.Models.Pagari> Pagaris { get; set; }
     }
 }
