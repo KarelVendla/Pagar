@@ -20,17 +20,17 @@
         <th>
             @Html.DisplayNameFor(model => model.Lisa)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TuleJärgi)
-        </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Aadress)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Valmis)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.PaneTeele)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TuleJärgi)
         </th>
         <th></th>
     </tr>
@@ -49,22 +49,31 @@
         <td>
             @Html.DisplayFor(modelItem => item.Lisa)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TuleJärgi)
-        </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Aadress)
+        </td>*@
+        <td>
+            @if (item.Valmis == true)
+            {
+                @:<b>Valmis</b>
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Valmis)
+            @if (item.TuleJärgi == false)
+            {
+                @Html.ActionLink("Üle antud", "Antud", new { id = item.Id})
+            } else
+	        {
+                @:<b>Lõpetatud</b>
+	        }
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.PaneTeele)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

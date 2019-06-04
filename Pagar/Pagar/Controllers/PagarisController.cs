@@ -15,16 +15,43 @@ namespace Pagar.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Pagaris
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Pagaris.Where(m => m.Valmis == false).ToList());
         }
 
+        // Loob vaate Valmis tooted, kus kuvatakse valmis tooted
+        [Authorize]
         public ActionResult Valmis_Tooted()
         {
             return View(db.Pagaris.Where(m => m.Valmis == true).ToList());
         }
 
+        public ActionResult Antud(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Pagari pagari = db.Pagaris.Find(id);
+            if (pagari == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                pagari.TuleJärgi = true;
+
+                db.Entry(pagari).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Valmis_Tooted");
+        }
+
+        //Määrab toote valmis
         public ActionResult M_Valmis(int? id)
         {
             if (id == null)
@@ -41,7 +68,7 @@ namespace Pagar.Controllers
             {
                 pagari.Valmis = true;
 
-                db.Pagaris.Add(pagari);
+                db.Entry(pagari).State = EntityState.Modified;
                 db.SaveChanges();
             }
 

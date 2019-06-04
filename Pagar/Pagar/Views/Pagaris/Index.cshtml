@@ -20,12 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Lisa)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.TuleJärgi)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Aadress)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Valmis)
         </th>
@@ -46,22 +46,20 @@
         <td>
             @Html.DisplayFor(modelItem => item.Lisa)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.TuleJärgi)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Aadress)
-        </td>
+        </td>*@
         <td>
             @if (item.Valmis == false)
             {
-                @Html.ActionLink("Määra valmis", "M_Valmis", new { id = item.Id })
-            }
-            else if (item.Valmis == true)
-            {
+                @Html.ActionLink("Määra valmis", "M_Valmis", new { id = item.Id})
+            } else if (item.Valmis == true)
+	        {
                 @:Valmis
-            }
-
+	        }   
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
