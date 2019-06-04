@@ -53,18 +53,43 @@
             @Html.DisplayFor(modelItem => item.Aadress)
         </td>*@
         <td>
-            @if (item.Valmis == false)
+            @if (User.Identity.IsAuthenticated == true)
             {
-                @Html.ActionLink("Määra valmis", "M_Valmis", new { id = item.Id})
-            } else if (item.Valmis == true)
-	        {
-                @:Valmis
-	        }   
+                if (item.Valmis == false)
+                {
+                    @Html.ActionLink("Määra valmis", "M_Valmis", new { id = item.Id })
+                }
+                else if (item.Valmis == true)
+                {
+                    @:Valmis
+                }
+            }
+            else if (User.Identity.IsAuthenticated == false)
+            {
+                if (item.Valmis == false)
+                {
+                    @:Valmimisel
+                }
+                else if (item.Valmis == true)
+                {
+                    @:Valmis
+                }
+            }
+
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @if (User.Identity.IsAuthenticated == true)
+            {
+
+                @Html.ActionLink("Edit |", "Edit", new { id = item.Id });
+                @Html.ActionLink("Details |", "Details", new { id = item.Id });
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id });
+
+            } else if(User.Identity.IsAuthenticated == false)
+            {
+                @:.
+            }
+
         </td>
     </tr>
 }

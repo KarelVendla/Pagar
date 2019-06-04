@@ -16,12 +16,12 @@ namespace Pagar.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Pagaris
-        [Authorize]
         public ActionResult Index()
         {
             return View(db.Pagaris.Where(m => m.Valmis == false).ToList());
         }
 
+        //Loob vaate Statistika ning kuvab nummerdatud andmeid
         public ActionResult Statistika()
         {
 
@@ -53,6 +53,7 @@ namespace Pagar.Controllers
             return View(db.Pagaris.Where(m => m.Valmis == true).ToList());
         }
 
+        //Meetod, mis võimaldab muuta toote üleantuks
         public ActionResult Antud(int? id)
         {
             if (id == null)
@@ -76,7 +77,7 @@ namespace Pagar.Controllers
             return RedirectToAction("Valmis_Tooted");
         }
 
-        //Määrab toote valmis
+        //Meetod, mis võimaldab määrata toode valmis tehtuks
         public ActionResult M_Valmis(int? id)
         {
             if (id == null)

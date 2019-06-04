@@ -19,7 +19,7 @@
                 </button>
 
 
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated == true)
                 {
                     @Html.ActionLink("Pagar", "Index", "Pagaris", new { area = "" }, new { @class = "navbar-brand" })
                 }
