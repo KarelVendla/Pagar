@@ -5,6 +5,7 @@
 }
 <h2>Statistika</h2>
 <table>
+    @* Näitab andeid --> *@
     <tr>
         <h3>Tellitud tooteid: @ViewBag.Kõik @TempData["Kõik"]</h3>
     </tr>
@@ -15,6 +16,7 @@
         <h3>Üleantud kliendile:  @ViewBag.Üleantud @TempData["Üleantud"]</h3>
     </tr>
 </table>
+@* Näitab loodud diagrammi *@
 @{
     <img src="@Url.Action("chart")" alt="SimpleChart" />
 }

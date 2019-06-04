@@ -56,7 +56,7 @@
             }
         </td>
         <td>
-
+            @* Kui kasutaja on sisselogitud siis saab muutusi teha kui ei siis näeb tavalist teksti *@
             @if (User.Identity.IsAuthenticated == true)
             {
                 if (item.TuleJärgi == false)
@@ -81,6 +81,7 @@
             }
         </td>
         <td>
+            @* Kui kasutaja on sisselogitud siis saab muutusi teha kui ei siis näeb tavalist teksti *@
             @if (User.Identity.IsAuthenticated == true)
             {
 
