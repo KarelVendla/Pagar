@@ -46,11 +46,10 @@ namespace Pagar.Controllers
             return null;
         }
 
-        // Loob vaate Valmis tooted, kus kuvatakse valmis tooted
-        [Authorize]
+        // Loob vaate, kus kuvatakse valmis tooted
         public ActionResult Valmis_Tooted()
         {
-            return View(db.Pagaris.Where(m => m.Valmis == true).ToList());
+            return View(db.Pagaris.Where(m => m.Valmis == true && m.TuleJärgi == false).ToList());
         }
 
         //Meetod, mis võimaldab muuta toote üleantuks
@@ -127,7 +126,7 @@ namespace Pagar.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Kogus,Toode,Tähtaeg,Lisa,TuleJärgi,Aadress")] Pagari pagari)
+        public ActionResult Create([Bind(Include = "Id,Kogus,Ühik,Toode,Tähtaeg,Lisa")] Pagari pagari)
         {
             if (ModelState.IsValid)
             {
@@ -159,7 +158,7 @@ namespace Pagar.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Kogus,Toode,Tähtaeg,Lisa,TuleJärgi,Aadress")] Pagari pagari)
+        public ActionResult Edit([Bind(Include = "Id,Kogus,Ühik,Toode,Tähtaeg,Lisa,TuleJärgi")] Pagari pagari)
         {
             if (ModelState.IsValid)
             {

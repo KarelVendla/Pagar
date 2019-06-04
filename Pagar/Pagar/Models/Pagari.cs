@@ -17,10 +17,7 @@ namespace Pagar.Models
         public string Lisa { get; set; }
         [Display(Name = "Kliendile üle antud")]
         public bool TuleJärgi { get; set; }
-        public string Aadress { get; set; }
         public bool Valmis { get; set; }
-        public bool PaneTeele { get; set; }
-
         public enum Tooted
         {
             Aleksandri_kook = 1,

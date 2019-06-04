@@ -23,15 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Lisa)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Aadress)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Valmis)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.PaneTeele)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.TuleJärgi)
         </th>
@@ -55,9 +49,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Lisa)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Aadress)
-        </td>*@
         <td>
             @if (item.Valmis == true)
             {
@@ -65,18 +56,30 @@
             }
         </td>
         <td>
-            @if (item.TuleJärgi == false)
+
+            @if (User.Identity.IsAuthenticated == true)
             {
-                @Html.ActionLink("Üle antud", "Antud", new { id = item.Id })
+                if (item.TuleJärgi == false)
+                {
+                    @Html.ActionLink("Üle antud", "Antud", new { id = item.Id })
+                }
+                else if (item.TuleJärgi == true)
+                {
+                    @:<b>Lõpetatud</b>
+                }
             }
-            else
+            else if (User.Identity.IsAuthenticated == false)
             {
-                @:<b>Lõpetatud</b>
+                if (item.TuleJärgi == false)
+                {
+                    @:Üle andmata
+                }
+                else if (item.Valmis == true)
+                {
+                    @:<b>Lõpetatud</b>
+                }
             }
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PaneTeele)
-        </td>*@
         <td>
             @if (User.Identity.IsAuthenticated == true)
             {
