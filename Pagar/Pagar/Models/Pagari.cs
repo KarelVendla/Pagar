@@ -16,8 +16,8 @@ namespace Pagar.Models
         [Display(Name = "Tulen järgi")]
         public bool TuleJärgi { get; set; }
         public string Aadress { get; set; }
-        public int Valmis { get; set; } = 0;
-        public int PaneTeele { get; set; } = 0;
+        public bool Valmis { get; set; }
+        public bool PaneTeele { get; set; }
 
         public enum Tooted
         {

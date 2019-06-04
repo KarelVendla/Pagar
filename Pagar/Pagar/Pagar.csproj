@@ -196,6 +196,14 @@
     <Compile Include="Migrations\201906040635523_up.Designer.cs">
       <DependentUpon>201906040635523_up.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906040658579_fixup.cs" />
+    <Compile Include="Migrations\201906040658579_fixup.Designer.cs">
+      <DependentUpon>201906040658579_fixup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040712205_tobool.cs" />
+    <Compile Include="Migrations\201906040712205_tobool.Designer.cs">
+      <DependentUpon>201906040712205_tobool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,6 +273,7 @@
     <Content Include="Views\Pagaris\Details.cshtml" />
     <Content Include="Views\Pagaris\Edit.cshtml" />
     <Content Include="Views\Pagaris\Index.cshtml" />
+    <Content Include="Views\Pagaris\Valmis_Tooted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -294,6 +303,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906040635523_up.resx">
       <DependentUpon>201906040635523_up.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040658579_fixup.resx">
+      <DependentUpon>201906040658579_fixup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040712205_tobool.resx">
+      <DependentUpon>201906040712205_tobool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

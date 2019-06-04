@@ -17,7 +17,35 @@ namespace Pagar.Controllers
         // GET: Pagaris
         public ActionResult Index()
         {
-            return View(db.Pagaris.ToList());
+            return View(db.Pagaris.Where(m => m.Valmis == false).ToList());
+        }
+
+        public ActionResult Valmis_Tooted()
+        {
+            return View(db.Pagaris.Where(m => m.Valmis == true).ToList());
+        }
+
+        public ActionResult M_Valmis(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Pagari pagari = db.Pagaris.Find(id);
+            if (pagari == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                pagari.Valmis = true;
+
+                db.Pagaris.Add(pagari);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
 
         // GET: Pagaris/Details/5
