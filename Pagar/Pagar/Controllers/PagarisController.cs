@@ -24,7 +24,7 @@ namespace Pagar.Controllers
         //Loob vaate Statistika ning kuvab nummerdatud andmeid
         public ActionResult Statistika()
         {
-
+            TempData["Kõige_Rohkem"] = db.Pagaris.Max(m => m.Kogus);
             TempData["Kõik"] = db.Pagaris.Count();
             TempData["Lõpetatud"] = db.Pagaris.Where(m => m.Valmis == true).Count();
             TempData["Üleantud"] = db.Pagaris.Where(m => m.TuleJärgi == true).Count();

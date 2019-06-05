@@ -9,6 +9,7 @@ namespace Pagar.Models
     public class Pagari
     {
         public int Id { get; set; }
+        [MaxLength(4)]
         public int Kogus { get; set; }
         public Ühikud Ühik { get; set; }
         public Tooted Toode { get; set; }
